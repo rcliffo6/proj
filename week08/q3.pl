@@ -33,7 +33,7 @@ while ($temp ne "Good-bye") {
  
        else { 
           my $Fah = ($temp * 9/5) + 32; 
-          print "$temp Celsius converts to $Fah Fahrenheit.\n\n"; 
+          printf  ("$temp Celsius converts to %d Fahrenheit.\n\n, $Fah"; 
        } 
     } 
     print "Give me another temperature to convert or type -> Good-bye.   "; 
