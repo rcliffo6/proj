@@ -73,7 +73,10 @@ has 'cleave_site2 => (
 # The cut_DNA method cleaves the DNA input sequence and retrieve the sequences
 # input is an string of DNA nucleotides
 # return @ is an array of DNA sequences split by cleavage site
-# called with $restriction-enzyme -> DNA_split(
+# called with $restriction-enzyme -> cut_DNA ($param1, optional $param2)
+# Note that this method may not be entirely correct. We would also want to check that the cut sites on both strands are
+# within the same site, either exactly apposed to each other for blunt ends, or within the constraints of
+# the sticky ends, which may be (depending on the Restriction Enzyme) 3 or more nucleotides apart per strand.
 sub cut_DNA {
   my @return_seq = ();
   my ($self, $param1, $param2) = @_;
