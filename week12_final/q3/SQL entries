@@ -1,0 +1,44 @@
+CREATE TABLE gift (
+   gift_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+   gift_name VARCHAR(20) NOT NULL,
+   gift_color VARCHAR(15) NOT NULL,
+   gift_size VARCHAR(1) NOT NULL,
+   retailer_ID INT NOT NULL,
+   gift_manufacturer VARCHAR(255),
+   price NUMERIC NOT NULL,
+   occasion_ID INT NOT NULL,
+   SSN INT,
+   date_bought VARCHAR(10)
+);
+CREATE TABLE retailer (
+   retailer_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+   retailer_name VARCHAR(25) NOT NULL
+);
+CREATE TABLE friends_and_family (
+   SSN INTEGER NOT NULL PRIMARY KEY,
+   Full_Name VARCHAR(255),
+   address VARCHAR(255),
+   phone VARCHAR(12) NOT NULL,
+   birthday VARCHAR(10)
+);
+CREATE TABLE gift_retailer (
+   gift_id,
+   retailer_id
+);
+CREATE TABLE friends_gift (
+   SSN,
+   gift_id
+);
+CREATE TABLE gift_occasion (
+   gift_ID,
+   occasion_ID
+);
+CREATE TABLE friends_occasion (
+   SSN,
+   occasion_ID
+);
+CREATE TABLE occasion (
+   occasion_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+   occasion_title VARCHAR(255),
+   occasion_date VARCHAR(10) NOT NULL
+);
