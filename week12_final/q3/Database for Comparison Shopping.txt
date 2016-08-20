@@ -1,0 +1,75 @@
+A DATABASE FOR COMPARISON SHOPPING
+
+      Within the context of this database, the only entity with one description is a unique gift, 
+which may be assigned a serial number and a description based on manufacturer, color, price, and size.
+That is, although a t-shirt can be many colors, for this data base, it will be a specific t-shirt 
+(say, red) made by a specific manufacturer, in order to comparison shop at numerous retailers, 
+i.e., Amazon, Wal-Mart, Macy’s, EBay. So 1NF will be gift with a number, color, emblem, and mfg. 
+Thus, there can be numerous t-shirts, but each is distinguished bydifferent color and manufacturer,
+requiring a different Primary ID number.
+    	Each retailer has different gifts. Each person has received numerous gifts. 
+Each gift has numerous prices at different retailers. The same gift can be given upon numerous occasions. 
+These all require different tables. These are “one to many” relationships. Therefore, each of these 
+attributes require splitting into a separate entity, i.e., Amazon, friends, occasions.
+    	Of course, each retailer has different locations to shop - online, different addresses, etc., 
+but for the sake of clarity, we will ignore this and assume that for a specific gift, manufacturer, 
+and size, there is only one price, and the person can look up the address that’s closest to them.
+    	All of these entities have many to many relationships. A gift can be bought from many retailers, 
+and a retailer has many of these gifts. Each friend/relative has received many gifts, and each gift 
+may have been given to many relatives. These require an associating table between all of them. 
+
+Gift entity
+FIELD NAME		DATA TYPE	NOTES
+gift_name		VARCHAR(20.tables)	Description
+gift_ID			INT		Primary Key
+gift_color		VARCHAR(15)	
+gift_size		VARCHAR(1)	S,M,L
+gift_retailer_ID	INT		Foreign Key
+gift_mfg		VARCHAR(255)	there may be different prices of different Mfgs.
+price			NUMERIC		2 Decimals
+occasion_ID		INT		Foreign Key
+SSN			INT(10)		Foreign Key
+date_bought		VARCHAR(10)	YYYY-MM-DD
+
+Retailer entity
+FIELD NAME		DATA TYPE	NOTES
+retailer_ID		INT		Primary Key
+retailer_name		VARCHAR(20)	
+
+Friends entity
+FIELD NAME		DATA TYPE	NOTES
+Last_Name,First_Name	VARCHAR(255)	May have 2 friends/relatives of same name, 
+					therefore, this is not a primary key
+Address			VARCHAR(255)	
+Phone Number		VARCHAR(255)
+Birthday		DATE
+Social Security Number	INT(10)		Primary Key (just kidding about the SSN)
+   (SSN)
+
+Occasions entity
+FIELD NAME		DATA TYPE	NOTES
+Title			VARCHAR(2550	Description
+occasion_ID		INT		Primary Key
+date			VARCHAR(10)	YYYY-MM-DD
+
+
+
+gift/retailer associating table
+FIELD NAME		DATA TYPE	NOTES
+gift_id			INT		
+retailer_id		INT
+
+friends/gift associating table
+FIELD NAME		DATA TYPE	NOTES
+SSN			INT(10)	
+gift_ID			INT		
+
+gift/occasion associating table
+FIELD NAME		DATA TYPE	NOTES
+gift_ID			INT
+occasion_ID		INT
+
+friends/occasions associating table
+FIELD NAME		DATA TYPE	NOTES
+SSN			INT(10)
+occasion_ID
